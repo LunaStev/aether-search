@@ -1,3 +1,4 @@
+#include <cmath>
 #include <iostream>
 #include <aethersearch/model_loader.h>
 

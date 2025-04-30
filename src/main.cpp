@@ -9,6 +9,8 @@ int main() {
     std::string base_path = std::filesystem::current_path().parent_path();
     std::string model_path = base_path + "/models/universal_encoder_v4";
 
+    std::string sentences_file = (std::filesystem::current_path().parent_path() / "data/sentences.txt").string();
+
     ModelLoader loader;
     if (!loader.LoadModel(model_path)) {
         std::cerr << "Failed to load model!" << std::endl;

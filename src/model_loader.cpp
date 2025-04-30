@@ -110,7 +110,7 @@ std::vector<float> ModelLoader::Run(const std::string& input_text) {
         return {};
     }
 
-    std::cout << "세션 실행 완료" << std::endl;
+    std::cout << "Complete session execution" << std::endl;
 
     float* output_data = static_cast<float*>(TF_TensorData(output_tensor));
     std::vector<float> result(output_data, output_data + 512);

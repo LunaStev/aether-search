@@ -67,8 +67,10 @@ std::vector<float> ModelLoader::Run(const std::string& input_text) {
     char length_bytes[10];
     size_t length_size = EncodeVarint(input_text.size(), length_bytes);
 
-    size_t total_size = sizeof(uint64_t) + length_size + input_text.size();
-    TF_Tensor* input_tensor = TF_AllocateTensor(TF_STRING, nullptr, 0, total_size);
+    size_t str_tensor_size = sizeof(uint64_t) + length_size + input_text.size();
+
+    int64_t dims[] = {1};
+    TF_Tensor* input_tensor = TF_AllocateTensor(TF_STRING, dims, 1, str_tensor_size);
     void* tensor_data = TF_TensorData(input_tensor);
 
     memset(tensor_data, 0, sizeof(uint64_t));

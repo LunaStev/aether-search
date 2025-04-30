@@ -79,7 +79,7 @@ std::vector<float> ModelLoader::Run(const std::string& input_text) {
 
     memcpy(static_cast<char*>(tensor_data) + sizeof(uint64_t) + length_size, input_text.data(), input_text.size());
 
-    std::cout << "입력 텐서 준비 완료" << std::endl;
+    std::cout << "Input tensor ready" << std::endl;
 
     TF_Output input_op = { TF_GraphOperationByName((TF_Graph*)graph, "serving_default_inputs"), 0 };
     TF_Output output_op = { TF_GraphOperationByName((TF_Graph*)graph, "StatefulPartitionedCall_1"), 0 };

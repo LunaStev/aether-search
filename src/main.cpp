@@ -6,7 +6,7 @@
 int main() {
     std::cout << "Hello, AetherSearch!" << std::endl;
 
-    std::string base_path = std::filesystem::current_path().parent_path(); // 실행 시점 기준 경로
+    std::string base_path = std::filesystem::current_path().parent_path();
     std::string model_path = base_path + "/models/universal_encoder_v4";
 
     ModelLoader loader;

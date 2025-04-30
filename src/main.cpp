@@ -32,5 +32,24 @@ int main() {
         if ((i + 1) % 8 == 0) std::cout << '\n';
     }
 
+    auto database = LoadSentenceEmbeddings(sentences_file, loader);
+
+    if (database.empty()) {
+        std::cerr << "No database" << std::endl;
+        return 1;
+    }
+
+    std::string user_query;
+    std::cout << "\nType a sentence > ";
+    std::getline(std::cin, user_query);
+
+    std::vector<float> query_vec = loader.Run(user_query);
+    if (query_vec.empty()) {
+        std::cerr << "Failed Query embedding" << std::endl;
+        return 1;
+    }
+
+    Search(database, query_vec);
+
     return 0;
 }
